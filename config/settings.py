@@ -19,6 +19,15 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 BOT_WEBHOOK_URL = f"{BOT_HOST}/bot/webhook/{BOT_TOKEN.split(':', maxsplit=1)[0]}/updates"
 BOT_USERNAME = os.getenv('BOT_USERNAME')
 
+DB_ENGINE = os.getenv('DB_ENGINE')
+
+
+POSTGRESQL_NAME = os.getenv('POSTGRESQL_NAME')
+POSTGRESQL_USER = os.getenv('POSTGRESQL_USER')
+POSTGRESQL_PASSWORD = os.getenv('POSTGRESQL_PASSWORD')
+POSTGRESQL_HOST = os.getenv('POSTGRESQL_HOST')
+POSTGRESQL_PORT = os.getenv('POSTGRESQL_PORT')
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -74,10 +83,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Database
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': DB_ENGINE,
+        'NAME': POSTGRESQL_NAME,
+        'USER': POSTGRESQL_USER,
+        'PASSWORD': POSTGRESQL_PASSWORD,
+        'HOST': POSTGRESQL_HOST,
+        'PORT': POSTGRESQL_PORT
     }
 }
 
